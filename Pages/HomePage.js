@@ -5,8 +5,14 @@ function goToHike(arg) {
 	router.push("editHike", hike);
 }
 
+function shareHike(arg) {
+	var hike = arg.data;
+	Context.shareHike(hike);
+}
+
 module.exports = {
 	hikes: Context.hikes,
 
-	goToHike: goToHike
+	goToHike: goToHike,
+	shareHike: shareHike
 };

@@ -6,7 +6,9 @@
 
 	<DockPanel ClipToBounds="true">
 		<NativeViewHost>
-			<MapView Style="Normal" ShowMyLocationButton="true" ShowMyLocation="true"/>
+			<MapView Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}" Style="Normal" ShowMyLocationButton="true" ShowMyLocation="true" AllowZoom="true" Zoom="15">
+				<MapMarker Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}"/>
+			</MapView>
 		</NativeViewHost>
 		<hikr.Button Text="Cancel" Dock="Bottom" Clicked="{cancel}" />
 	</DockPanel>

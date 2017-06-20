@@ -14,12 +14,15 @@
 
 				<Each Items="{hikes}">
 					<Separator/>
-					<Panel HitTestMode="LocalBoundsAndChildren" Clicked="{goToHike}">
-						<hikr.Text Margin="20" Value="{name}"/>
-						<WhilePressed>
-							<Scale Factor=".95" Duration=".08" Easing="QuadraticOut"/>
-						</WhilePressed>
-					</Panel>
+					<Grid ColumnCount="2">
+						<Panel HitTestMode="LocalBoundsAndChildren" Clicked="{goToHike}" Width="180">
+							<hikr.Text Margin="20" Value="{name}"/>
+							<WhilePressed>
+								<Scale Factor=".95" Duration=".08" Easing="QuadraticOut"/>
+							</WhilePressed>
+						</Panel>
+						<hikr.Button Clicked="{shareHike}" Text="Share" Width="65" Alignment="Right"/>
+					</Grid>
 				</Each>
 
 				<Separator />

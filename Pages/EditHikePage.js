@@ -1,4 +1,5 @@
 var Context = require("Modules/Context");
+var GeoLocation = require("FuseJS/GeoLocation");
 
 var hike = this.Parameter;
 
@@ -16,7 +17,7 @@ function cancel() {
 }
 
 function save() {
-	Context.updateHike(hike.value.id, 
+	Context.updateHike(hike.value.id,
 		name.value, 
 		location.value, 
 		distance.value, 
@@ -27,7 +28,13 @@ function save() {
 }
 
 function goToMap() {
-	router.push("geoMap");
+	var timeoutMs = 3000;
+	GeoLocation.getLocation(timeoutMs).then(function(currentLocation) {
+		console.log("INFO (EditHikePage): currentLocation: " + JSON.stringify(currentLocation));
+	    router.push("geoMap", currentLocation);
+	}).catch(function(fail) {
+	    console.log("ERROR: getLocation fail " + fail);
+	});
 }
 
 module.exports = {
@@ -36,7 +43,7 @@ module.exports = {
 	distance: distance,
 	rating: rating,
 	comments: comments,
-	geoLocation:geoLocation,
+	geoLocation: geoLocation,
 
 	cancel: cancel,
 	save: save,

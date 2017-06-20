@@ -1,5 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var Backend = require("./Backend");
+var Share = require("./Share");
 
 var hikes = Observable();
 
@@ -31,8 +32,14 @@ function updateHike(id, name, location, distance, rating, comments, geoLocation)
 		});
 }
 
+function shareHike(hike) {
+	console.log("Sharing hike: " + hike.name + " - " + hike.comments);
+	Share.shareText(hike.name, hike.comments);
+}
+
 module.exports = {
 	hikes: hikes,
 
-	updateHike: updateHike
+	updateHike: updateHike,
+	shareHike: shareHike
 };
