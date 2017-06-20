@@ -1,0 +1,55 @@
+<hikr.Page ux:Class="EditHikePage">
+	<Router ux:Dependency="router" />
+
+	<JavaScript File="EditHikePage.js" />
+
+	<DockPanel>
+
+		<Grid ColumnCount="2" Dock="Bottom">
+			<hikr.Button Clicked="{cancel}" Text="Cancel"/>
+			<hikr.Button Clicked="{save}" Text="Save"/>
+		</Grid>
+
+		<ScrollView>
+			<StackPanel Padding="10" ItemSpacing="10">
+
+				<hikr.Text ux:Class="TitleText" Opacity=".6" Margin="0,0,0,5" />
+
+				<StackPanel>
+					<TitleText>Name:</TitleText>
+					<hikr.TextBox Value="{name}" CaretColor="White" Padding="10"/>
+				</StackPanel>
+
+				<StackPanel>
+					<TitleText>Location:</TitleText>
+					<hikr.TextBox Value="{location}" />
+				</StackPanel>
+
+				<StackPanel>
+					<TitleText>Geo-Location:</TitleText>
+					<hikr.TextBox Value="{geoLocation}" />
+					<Grid>
+						<hikr.Button Text="Change Location" Clicked="{goToMap}"/>
+					</Grid>
+				</StackPanel>
+
+				<StackPanel>
+					<TitleText>Distance (km):</TitleText>
+					<hikr.TextBox Value="{distance}" InputHint="Decimal" />
+				</StackPanel>
+
+				<StackPanel>
+					<TitleText>Rating:</TitleText>
+					<hikr.TextBox Value="{rating}" InputHint="Integer" />
+				</StackPanel>
+
+				<StackPanel>
+					<TitleText>Comments:</TitleText>
+					<hikr.TextView Value="{comments}" />
+				</StackPanel>
+
+			</StackPanel>
+		</ScrollView>
+
+	</DockPanel>
+</hikr.Page>

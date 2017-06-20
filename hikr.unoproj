@@ -1,0 +1,12 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+  	"Fuse.Maps",
+    "Fuse",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*",
+    "Modules/*.js:Bundle"
+  ]
+}

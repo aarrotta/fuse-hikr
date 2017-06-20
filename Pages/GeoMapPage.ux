@@ -1,0 +1,14 @@
+<Page ux:Class="GeoMapPage">
+
+	<Router ux:Dependency="router" />
+
+	<JavaScript File="GeoMapPage.js" />
+
+	<DockPanel ClipToBounds="true">
+		<NativeViewHost>
+			<MapView Style="Normal" ShowMyLocationButton="true" ShowMyLocation="true"/>
+		</NativeViewHost>
+		<hikr.Button Text="Cancel" Dock="Bottom" Clicked="{cancel}" />
+	</DockPanel>
+
+</Page>
