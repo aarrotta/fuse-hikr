@@ -25,7 +25,7 @@ function updateHike(id, name, location, distance, rating, comments, geoLocation)
 			break;
 		}
 	}
-	Backend.updateHike(id, name, location, distance, rating, comments)
+	Backend.updateHike(id, name, location, distance, rating, comments, geoLocation)
 		.catch(function(error) {
 			console.log("Couldn't update hike: " + id);
 		});

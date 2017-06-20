@@ -54,7 +54,7 @@ function getHikes() {
 	});
 }
 
-function updateHike(id, name, location, distance, rating, comments) {
+function updateHike(id, name, location, distance, rating, comments, geoLocation) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
 			for (var i = 0; i < hikes.length; i++) {
