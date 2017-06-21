@@ -26,7 +26,7 @@
 				<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
 			</StackPanel>
 
-			<hikr.Button Text="Get Started" FontSize="18" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}"/>
+			<hikr.Button Text="Get Started" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}"/>
 
 		</Grid>
 

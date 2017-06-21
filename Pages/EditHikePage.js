@@ -34,7 +34,8 @@ function save() {
 }
 
 function goToMap() {
-	if(geoLocation == undefined || geoLocation.latitude == undefined || geoLocation.longitude == undefined) {
+	if(geoLocation == undefined || geoLocation.value == undefined
+			|| geoLocation.value.latitude == undefined || geoLocation.value.longitude == undefined) {
 		console.log("INFO: Getting current device location...");
 		var timeoutMs = 5000;
 		GeoLocation.getLocation(timeoutMs).then(function(currentLocation) {
@@ -44,8 +45,9 @@ function goToMap() {
 		    console.log("ERROR: getLocation fail " + fail);
 		});
 	} else {
-		console.log("INFO: Using hike location " + geoLocation.latitude + ", " + geoLocation.longitude);
-		router.push("geoMap", { hike: hike.value, location: geoLocation});
+		console.log("INFO: Using hike location " + geoLocation.value.latitude + ", " 
+			+ geoLocation.value.longitude);
+		router.push("geoMap", { hike: hike.value, location: geoLocation.value});
 	}
 }
 
