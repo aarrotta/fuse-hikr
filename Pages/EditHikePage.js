@@ -34,12 +34,19 @@ function save() {
 }
 
 function goToMap() {
-	var timeoutMs = 3000;
-	GeoLocation.getLocation(timeoutMs).then(function(currentLocation) {
-	    router.push("geoMap", { hike: hike.value, location: currentLocation});
-	}).catch(function(fail) {
-	    console.log("ERROR: getLocation fail " + fail);
-	});
+	if(geoLocation == undefined || geoLocation.latitude == undefined || geoLocation.longitude == undefined) {
+		console.log("INFO: Getting current device location...");
+		var timeoutMs = 5000;
+		GeoLocation.getLocation(timeoutMs).then(function(currentLocation) {
+			console.log("INFO: " + currentLocation.latitude + ", " + currentLocation.longitude);
+		    router.push("geoMap", { hike: hike.value, location: currentLocation});
+		}).catch(function(fail) {
+		    console.log("ERROR: getLocation fail " + fail);
+		});
+	} else {
+		console.log("INFO: Using hike location " + geoLocation.latitude + ", " + geoLocation.longitude);
+		router.push("geoMap", { hike: hike.value, location: geoLocation});
+	}
 }
 
 module.exports = {

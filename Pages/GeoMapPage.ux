@@ -6,7 +6,7 @@
 
 	<DockPanel ClipToBounds="true">
 		<NativeViewHost>
-			<MapView ux:Name="hikeMapView" Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}" Style="Normal" ShowMyLocationButton="true" ShowMyLocation="true" AllowZoom="true" Zoom="15" LocationLongPressed="{updateLocation}" >
+			<MapView ux:Name="hikeMapView" Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}" Style="Normal" ShowMyLocationButton="true" AllowZoom="true" Zoom="15" LocationLongPressed="{updateLocation}" >
 				<MapMarker Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}"/>
 			</MapView>
 		</NativeViewHost>
