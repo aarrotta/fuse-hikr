@@ -30,8 +30,7 @@ function save() {
 function goToMap() {
 	var timeoutMs = 3000;
 	GeoLocation.getLocation(timeoutMs).then(function(currentLocation) {
-		console.log("INFO (EditHikePage): currentLocation: " + JSON.stringify(currentLocation));
-	    router.push("geoMap", currentLocation);
+	    router.push("geoMap", { hike: hike.value, location: currentLocation});
 	}).catch(function(fail) {
 	    console.log("ERROR: getLocation fail " + fail);
 	});

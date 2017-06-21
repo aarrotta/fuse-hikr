@@ -10,7 +10,10 @@
 				<MapMarker Latitude="{currentLocation.latitude}" Longitude="{currentLocation.longitude}"/>
 			</MapView>
 		</NativeViewHost>
-		<hikr.Button Text="Cancel" Dock="Bottom" Clicked="{cancel}" />
+		<Grid ColumnCount="2" Dock="Bottom">
+			<hikr.Button Clicked="{cancel}" Text="Cancel"/>
+			<hikr.Button Clicked="{save}" Text="Save"/>
+		</Grid>
 	</DockPanel>
 
 </Page>

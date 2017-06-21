@@ -32,6 +32,21 @@ function updateHike(id, name, location, distance, rating, comments, geoLocation)
 		});
 }
 
+function updateGeoLocation(id, geoLocation) {
+		for (var i = 0; i < hikes.length; i++) {
+		var hike = hikes.getAt(i);
+		if (hike.id == id) {
+			hike.geoLocation = geoLocation;
+			hikes.replaceAt(i, hike);
+			break;
+		}
+	}
+	Backend.updateGeoLocation(id, geoLocation)
+		.catch(function(error) {
+			console.log("Couldn't update hike: " + id);
+		});
+}
+
 function shareHike(hike) {
 	console.log("Sharing hike: " + hike.name + " - " + hike.comments);
 	Share.shareText(hike.name, hike.comments);
@@ -41,5 +56,6 @@ module.exports = {
 	hikes: hikes,
 
 	updateHike: updateHike,
-	shareHike: shareHike
+	shareHike: shareHike,
+	updateGeoLocation: updateGeoLocation
 };
