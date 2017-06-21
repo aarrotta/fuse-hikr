@@ -19,8 +19,16 @@ function save() {
 	router.goBack();
 }
 
+function updateLocation(args) {
+	console.log("hikeMapView longpresed: " + args.latitude + ", " + args.longitude);
+	hikeMapView.setMarkers([{latitude: args.latitude, longitude: args.longitude}]);
+	currentLocation.latitude = args.latitude;
+	currentLocation.longitude = args.longitude;
+}
+
 module.exports = { 
 	cancel: cancel,
 	currentLocation: currentLocation,
-	save: save
+	save: save,
+	updateLocation: updateLocation
 }
