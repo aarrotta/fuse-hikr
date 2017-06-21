@@ -15,9 +15,7 @@ function cancel() {
 }
 
 function save() {
-	var locationString = currentLocation.latitude + "," + currentLocation.longitude;
-	console.log("INFO (GeoMapPage): saving location " + locationString + " for hike " + hike.id);
-	Context.updateGeoLocation(hike.id, currentLocation.latitude + ", " + currentLocation.longitude);
+	Context.updateGeoLocation(hike.id, currentLocation);
 	router.goBack();
 }
 

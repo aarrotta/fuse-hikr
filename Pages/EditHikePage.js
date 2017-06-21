@@ -5,10 +5,17 @@ var hike = this.Parameter;
 
 var name = hike.map(function(x) { return x.name; });
 var location = hike.map(function(x) { return x.location; });
-var geoLocation = hike.map(function(x) { return x.geoLocation; });
 var distance = hike.map(function(x) { return x.distance; });
 var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
+var geoLocation = hike.map(function(x) { return x.geoLocation; });
+var showGeoLocation = hike.map(function(x) {
+	if(x.geoLocation != null && x.geoLocation != undefined) {
+		return true;
+	} else {
+		return false;
+	}
+});
 
 function cancel() {
 	// Refresh hike value to reset dependent Observables' values
@@ -22,8 +29,7 @@ function save() {
 		location.value, 
 		distance.value, 
 		rating.value, 
-		comments.value,
-		geoLocation.value);
+		comments.value);
 	router.goBack();
 }
 
@@ -43,6 +49,7 @@ module.exports = {
 	rating: rating,
 	comments: comments,
 	geoLocation: geoLocation,
+	showGeoLocation: showGeoLocation,
 
 	cancel: cancel,
 	save: save,

@@ -12,7 +12,7 @@ Backend.getHikes()
 		console.log("Couldn't get hikes: " + error);
 	});
 
-function updateHike(id, name, location, distance, rating, comments, geoLocation) {
+function updateHike(id, name, location, distance, rating, comments) {
 	for (var i = 0; i < hikes.length; i++) {
 		var hike = hikes.getAt(i);
 		if (hike.id == id) {
@@ -21,12 +21,11 @@ function updateHike(id, name, location, distance, rating, comments, geoLocation)
 			hike.distance = distance;
 			hike.rating = rating;
 			hike.comments = comments;
-			hike.geoLocation = geoLocation;
 			hikes.replaceAt(i, hike);
 			break;
 		}
 	}
-	Backend.updateHike(id, name, location, distance, rating, comments, geoLocation)
+	Backend.updateHike(id, name, location, distance, rating, comments)
 		.catch(function(error) {
 			console.log("Couldn't update hike: " + id);
 		});

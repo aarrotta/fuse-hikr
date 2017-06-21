@@ -26,14 +26,6 @@
 				</StackPanel>
 
 				<StackPanel>
-					<TitleText>Geo-Location:</TitleText>
-					<hikr.TextBox Value="{geoLocation}" />
-					<Grid>
-						<hikr.Button Text="Change Location" Clicked="{goToMap}"/>
-					</Grid>
-				</StackPanel>
-
-				<StackPanel>
 					<TitleText>Distance (km):</TitleText>
 					<hikr.TextBox Value="{distance}" InputHint="Decimal" />
 				</StackPanel>
@@ -46,6 +38,25 @@
 				<StackPanel>
 					<TitleText>Comments:</TitleText>
 					<hikr.TextView Value="{comments}" />
+				</StackPanel>
+
+				<StackPanel>
+					<WhileTrue Value="{showGeoLocation}">
+						<NativeViewHost>
+							<MapView Latitude="{geoLocation.latitude}" Longitude="{geoLocation.longitude}" Style="Normal" ShowMyLocationButton="false" ShowMyLocation="false" AllowZoom="false" Zoom="15"
+								Height="150">
+								<MapMarker Latitude="{geoLocation.latitude}" Longitude="{geoLocation.longitude}"/>
+							</MapView>
+						</NativeViewHost>
+					</WhileTrue>
+					<Grid>
+						<WhileTrue Value="{showGeoLocation}">
+							<hikr.Button Text="Change Location" Clicked="{goToMap}"/>
+						</WhileTrue>
+						<WhileFalse Value="{showGeoLocation}">
+							<hikr.Button Text="Select Location" Clicked="{goToMap}"/>
+						</WhileFalse>
+					</Grid>
 				</StackPanel>
 
 			</StackPanel>
