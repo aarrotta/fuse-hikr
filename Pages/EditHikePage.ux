@@ -21,6 +21,14 @@
 				</StackPanel>
 
 				<StackPanel>
+					<TitleText>Picture:</TitleText>
+					<Image File="{picturePath}" ContentAlignment="VerticalCenter" MaxHeight="150" StretchMode="UniformToFill">
+						<Clicked Handler="{showPicturePopup}" />
+					</Image>
+					<hikr.Button Text="Take Picture" Clicked="{takePicture}"/>
+				</StackPanel>
+
+				<StackPanel>
 					<TitleText>Location:</TitleText>
 					<hikr.TextBox Value="{location}" />
 				</StackPanel>

@@ -32,7 +32,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 }
 
 function updateGeoLocation(id, geoLocation) {
-		for (var i = 0; i < hikes.length; i++) {
+	for (var i = 0; i < hikes.length; i++) {
 		var hike = hikes.getAt(i);
 		if (hike.id == id) {
 			hike.geoLocation = geoLocation;
@@ -41,6 +41,22 @@ function updateGeoLocation(id, geoLocation) {
 		}
 	}
 	Backend.updateGeoLocation(id, geoLocation)
+		.catch(function(error) {
+			console.log("Couldn't update hike: " + id);
+		});
+}
+
+function updatePicture(id, picture) {
+	console.log("DEBUG: storing picture " + picture.name + " into context hike " + id);
+	for (var i = 0; i < hikes.length; i++) {
+		var hike = hikes.getAt(i);
+		if (hike.id == id) {
+			hike.picture = picture;
+			hikes.replaceAt(i, hike);
+			break;
+		}
+	}
+	Backend.updatePicture(id, picture)
 		.catch(function(error) {
 			console.log("Couldn't update hike: " + id);
 		});
@@ -56,5 +72,6 @@ module.exports = {
 
 	updateHike: updateHike,
 	shareHike: shareHike,
-	updateGeoLocation: updateGeoLocation
+	updateGeoLocation: updateGeoLocation,
+	updatePicture: updatePicture
 };

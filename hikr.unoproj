@@ -4,6 +4,7 @@
   	"Fuse.Maps",
     "Fuse.Share",
     "Fuse.GeoLocation",
+    "Fuse.Camera",
     "Fuse",
     "FuseJS"
   ],

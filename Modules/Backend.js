@@ -6,7 +6,8 @@ var hikes = [
 		distance: 10.4,
 		rating: 4,
 		comments: "This hike was nice and hike-like. Glad I didn't bring a bike.",
-		geoLocation: null
+		geoLocation: null,
+		picture: null
 	},
 	{
 		id: 1,
@@ -15,7 +16,8 @@ var hikes = [
 		distance: 20.86,
 		rating: 3,
 		comments: "Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.",
-		geoLocation: null
+		geoLocation: null,
+		picture: null
 	},
 	{
 		id: 2,
@@ -24,7 +26,8 @@ var hikes = [
 		distance: 8.2,
 		rating: 5,
 		comments: "Short but SO sweet!!",
-		geoLocation: null
+		geoLocation: null,
+		picture: null
 	},
 	{
 		id: 3,
@@ -33,7 +36,8 @@ var hikes = [
 		distance: 12.3,
 		rating: 4,
 		comments: "Took my time with this one. Great view!",
-		geoLocation: null
+		geoLocation: null,
+		picture: null
 	},
 	{
 		id: 4,
@@ -42,7 +46,8 @@ var hikes = [
 		distance: 19.34,
 		rating: 2,
 		comments: "Too long, too hot. Also that snakebite wasn't very fun.",
-		geoLocation: null
+		geoLocation: null,
+		picture: null
 	}
 ];
 
@@ -90,8 +95,25 @@ function updateGeoLocation(id, geoLocation) {
 	});
 }
 
+function updatePicture(id, picture) {
+	return new Promise(function(resolve, reject) {
+		setTimeout(function() {
+			for (var i = 0; i < hikes.length; i++) {
+				var hike = hikes[i];
+				if (hike.id == id) {
+					hike.picture = picture;
+					break;
+				}
+			}
+
+			resolve();
+		}, 0);
+	});
+}
+
 module.exports = {
 	getHikes: getHikes,
 	updateHike: updateHike,
-	updateGeoLocation: updateGeoLocation
+	updateGeoLocation: updateGeoLocation,
+	updatePicture: updatePicture
 };

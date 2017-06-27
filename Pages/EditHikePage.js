@@ -1,5 +1,6 @@
 var Context = require("Modules/Context");
 var GeoLocation = require("FuseJS/GeoLocation");
+var Camera = require('FuseJS/Camera');
 
 var hike = this.Parameter;
 
@@ -9,6 +10,9 @@ var distance = hike.map(function(x) { return x.distance; });
 var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 var geoLocation = hike.map(function(x) { return x.geoLocation; });
+var picturePath = hike.map(function(x) { 
+	return x.picture != null ? x.picture.path : ""; 
+});
 var showGeoLocation = hike.map(function(x) {
 	if(x.geoLocation != null && x.geoLocation != undefined) {
 		return true;
@@ -51,6 +55,16 @@ function goToMap() {
 	}
 }
 
+function takePicture() {
+	Camera.takePicture().then(function(image)
+	{
+	    console.log("INFO: Picture taken correctly: " + JSON.stringify(image));
+	    Context.updatePicture(hike.value.id, image);
+	}).catch(function(error) {
+    	    console.log("ERROR: Error taking picture: " + JSON.stringify(error));
+	});
+}
+
 module.exports = {
 	name: name,
 	location: location,
@@ -59,7 +73,9 @@ module.exports = {
 	comments: comments,
 	geoLocation: geoLocation,
 	showGeoLocation: showGeoLocation,
+	picturePath: picturePath,
 
+	takePicture: takePicture,
 	cancel: cancel,
 	save: save,
 	goToMap: goToMap
